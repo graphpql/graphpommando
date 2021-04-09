@@ -1,0 +1,51 @@
+{
+  "name": "infinityloop-dev/graphpommando",
+  "description": "Easy-to-use & Fast GraphQL client implementation for PHP.",
+  "homepage": "https://www.infinityloop.dev/",
+  "type": "library",
+  "license": ["MIT"],
+  "authors": [
+    {
+      "name": "Václav Pelíšek",
+      "homepage": "https://www.peldax.com",
+      "role": "lead"
+    }
+  ],
+  "require": {
+    "php": ">=8.0.1",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "7.3.0",
+    "infinityloop-dev/utils": "^2.1.2",
+    "nette/utils": "^3.2",
+    "psr/http-message": "^1.0.1",
+    "psr/log": "^1.1.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.3",
+    "infection/infection": "^0.19 || ^0.20 || ^0.21",
+    "phpstan/phpstan": "^0.12",
+    "infinityloop-dev/coding-standard": "^0.1"
+  },
+  "scripts": {
+    "phpunit": "phpunit tests",
+    "infection": [
+      "Composer\\Config::disableProcessTimeout",
+      "infection -j$(nproc)"
+    ],
+    "phpstan": "phpstan analyze --level 2 src",
+    "phpstan-next": "phpstan analyze --level 3 src",
+    "phpstan-max": "phpstan analyze --level max src",
+    "codestyle": "phpcs --standard=vendor/infinityloop-dev/coding-standard/InfinityloopCodingStandard/ruleset.xml --extensions=php src tests",
+    "codestyle-fix": "phpcbf --standard=vendor/infinityloop-dev/coding-standard/InfinityloopCodingStandard/ruleset.xml --extensions=php src tests"
+  },
+  "autoload": {
+    "psr-4": {
+      "Graphpommando\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Graphpommando\\Tests\\": "tests/"
+    }
+  }
+}
