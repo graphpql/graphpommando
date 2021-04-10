@@ -6,13 +6,6 @@ namespace Graphpommando;
 
 final class EntityHydrator
 {
-    private const SCALAR_TYPES = [
-        'string' => 1,
-        'int' => 1,
-        'float' => 1,
-        'bool' => 1,
-    ];
-
     public function hydrate(string $class, string $responseJson) : Entity
     {
         $json = \Infinityloop\Utils\Json::fromString($responseJson)->toNative();
@@ -40,7 +33,7 @@ final class EntityHydrator
     private function getAppropriateValue(
         \Graphpommando\Helper\TypeInfo $typeInfo,
         \stdClass|array|string|int|float|bool|null $value,
-    ) : Entity|array|string|int|float|bool|null
+    ) : mixed
     {
         if ($value === null && $typeInfo->allowsNull()) {
             return null;
@@ -49,13 +42,13 @@ final class EntityHydrator
         $typeName = $typeInfo->getTypeName();
 
         if (\is_scalar($value)) {
-            if (\array_key_exists($typeName, self::SCALAR_TYPES)) {
+            if (\array_key_exists($typeName, QueryBuilder::SCALAR_TYPES)) {
                 return $value;
             }
 
-            // if property is not scalar, try to pass scalar value as constructor argument
-            // useful for \DateTime and other objects which wrap scalar value
-            return $typeName($value);
+            if ($typeInfo->isConstructorPass()) {
+                return new $typeName($value);
+            }
         }
 
         if (\is_array($value)) {

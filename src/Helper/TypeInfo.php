@@ -11,4 +11,6 @@ interface TypeInfo
     public function getTypeName() : string;
 
     public function getNestedType() : TypeInfo;
+
+    public function isConstructorPass() : bool;
 }

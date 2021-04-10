@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Graphpommando;
+namespace Graphpommando\Attribute;
 
 #[\Attribute(\Attribute::TARGET_PROPERTY)]
 final class Alias

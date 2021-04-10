@@ -9,7 +9,8 @@ final class AttributeTypeInfo implements TypeInfo
     public function __construct(
         private string $type,
         private bool $nullable,
-        private ?self $nested = null,
+        private ?array $nested = null,
+        private bool $constructorPass = false,
     ) {}
 
     public function allowsNull() : bool
@@ -24,7 +25,13 @@ final class AttributeTypeInfo implements TypeInfo
 
     public function getNestedType() : TypeInfo
     {
-        return $this->nested
-            ?? throw new \RuntimeException();
+        return \is_array($this->nested)
+            ? new self(...$this->nested)
+            : throw new \RuntimeException();
+    }
+
+    public function isConstructorPass() : bool
+    {
+        return $this->constructorPass;
     }
 }

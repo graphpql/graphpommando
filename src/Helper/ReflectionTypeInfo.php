@@ -22,10 +22,15 @@ final class ReflectionTypeInfo implements TypeInfo
 
     public function getNestedType() : TypeInfo
     {
-        $attributes = $this->reflectionProperty->getAttributes(\Graphpommando\OfType::class);
+        $attributes = $this->reflectionProperty->getAttributes(\Graphpommando\Attribute\OfType::class);
 
         return \count($attributes) === 1
-            ? $attributes[0]->newInstance()->typeInfo
+            ? $attributes[0]->newInstance()->getTypeInfo()
             : throw new \RuntimeException();
+    }
+
+    public function isConstructorPass() : bool
+    {
+        return \count($this->reflectionProperty->getAttributes(\Graphpommando\Attribute\ConstructorPass::class)) === 1;
     }
 }
