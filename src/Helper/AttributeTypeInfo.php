@@ -24,6 +24,7 @@ final class AttributeTypeInfo implements TypeInfo
 
     public function getNestedType() : TypeInfo
     {
-        return $this->nested;
+        return $this->nested
+            ?? throw new \RuntimeException();
     }
 }

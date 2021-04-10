@@ -24,10 +24,8 @@ final class ReflectionTypeInfo implements TypeInfo
     {
         $attributes = $this->reflectionProperty->getAttributes(\Graphpommando\OfType::class);
 
-        if (\count($attributes) !== 1) {
-            throw new \RuntimeException();
-        }
-
-        return $attributes[0]->newInstance()->typeInfo;
+        return \count($attributes) === 1
+            ? $attributes[0]->newInstance()->typeInfo
+            : throw new \RuntimeException();
     }
 }
