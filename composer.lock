@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1128b1293fda1801db1a733b195f3fba",
+    "content-hash": "735d2da44bcb1a2d69fdc1eef1a4b094",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -1808,16 +1808,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.89",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "54c0f5a6c30511b77128d58b6369f718df250542"
+                "reference": "0d13a99513182e521271d46bde8f28caa4f84d97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/54c0f5a6c30511b77128d58b6369f718df250542",
-                "reference": "54c0f5a6c30511b77128d58b6369f718df250542",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/0d13a99513182e521271d46bde8f28caa4f84d97",
+                "reference": "0d13a99513182e521271d46bde8f28caa4f84d97",
                 "shasum": ""
             },
             "require": {
@@ -1833,7 +1833,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.12-dev"
+                    "dev-master": "1.0-dev"
                 }
             },
             "autoload": {
@@ -1848,7 +1848,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.89"
+                "source": "https://github.com/phpstan/phpstan/tree/1.0.0"
             },
             "funding": [
                 {
@@ -1868,7 +1868,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-09T20:23:49+00:00"
+            "time": "2021-11-01T06:38:20+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
